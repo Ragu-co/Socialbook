@@ -1,0 +1,39 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search</title>
+    <link rel="stylesheet"  href="{% static 'css/search.css' %}">
+</head>
+<body>
+    <header>
+
+        <div>
+            <input type="text" placeholder="Search for username...">
+            <button>Search</button>
+        </div>
+        <div>
+        {% for users in username_profile_list %}
+            <span>Welcome,<a href="/profile/{{users.user}}">@{{users.user}}</a></span>
+            <span><button class="new-post-button">New Post</button></span>
+        </div>
+    </header>
+
+
+    <div class="profile-container">
+        <div class="profile-box">
+            <img src="{{users.profileimg.url}}" alt="Profile Picture">
+            <div class="profile-info">
+                <h2><a href="/profile/{{users.user}}">@{{users.user}}</a></h2>
+                <p><strong>Location:</strong>{{users.location}}</p>
+                <p><strong>Bio:</strong>{{users.bio}}</p>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+
+
+</body>
+</html>
